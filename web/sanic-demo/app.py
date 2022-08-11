@@ -1,7 +1,7 @@
+import asyncio
+
 from sanic import Sanic
 from sanic.response import text
-import cv2
-import numpy
 
 app = Sanic(__name__)
 
@@ -11,10 +11,13 @@ async def handler(request):
     print(request)
     return text('POST request ')
 
+
 @app.get('/')
 async def handler(request):
-    print(request)
-    return text('POST request ')
+    print("得到请求")
+    await asyncio.sleep(5)
+    return text('hello')
+
 
 if __name__ == '__main__':
-    app.run("0.0.0.0",5678)
+    app.run("0.0.0.0", 5678)
